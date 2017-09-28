@@ -6,6 +6,7 @@ from sklearn.cross_validation import train_test_split
 from sklearn.ensemble import RandomForestClassifier  
 from sklearn.metrics import precision_recall_curve  
 from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
 
 
 # Retrieve Data Set
@@ -48,11 +49,12 @@ queue_rate = []
 for threshold in thresholds:  
     queue_rate.append((predictions >= threshold).mean())
 
-plt.plot(thresholds, precision, color=sns.color_palette()[0])  
-plt.plot(thresholds, recall, color=sns.color_palette()[1])  
-plt.plot(thresholds, queue_rate, color=sns.color_palette()[2])
+plt.plot(thresholds, precision, color= 'grey')  
+plt.plot(thresholds, recall, color= 'red')  
+plt.plot(thresholds, queue_rate, color= 'blue')
 
 leg = plt.legend(('precision', 'recall', 'queue_rate'), frameon=True)  
 leg.get_frame().set_edgecolor('k')  
 plt.xlabel('threshold')  
-plt.ylabel('%')  
+plt.ylabel('%')
+plt.show()
